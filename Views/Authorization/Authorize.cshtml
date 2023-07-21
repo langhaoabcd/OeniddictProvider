@@ -1,0 +1,36 @@
+﻿@using Microsoft.Extensions.Primitives
+@using OeniddictProvider.ViewModels;
+@model AuthorizeViewModel
+@{
+    ViewData["Title"] = "应用授权";
+}
+<link rel="stylesheet" href="~/css/authorize.css" asp-append-version="true" />
+
+<div class="jumbotron authorize-wrapper">
+    <div class="authorize-top w-100 m-auto">
+        <div class="top-box">
+            <img class="top-box-img" src="~/images/headIcon.png" alt="">
+            <img class="top-box-middle" src="~/images/jiantou.png" alt="">
+            <div class="top-box-img" style="background-color:#dc3545">
+                <span class="top-box-right-name">@Model.ApplicationName.Substring(0,1)</span>
+            </div>
+        </div>
+    </div>
+    <div class="authorize-content w-100 m-auto">
+        <div>即将授权登录 <strong>@Model.ApplicationName</strong> </div>
+        <div>并连接你的个人信息、访问用户数据</div>
+        <div class="pb-5">更多权限：@Model.Scope</div>
+        <form asp-controller="Authorization" asp-action="Authorize" method="post">
+            @foreach (var parameter in Context.Request.HasFormContentType ?
+            (IEnumerable<KeyValuePair<string, StringValues>>)Context.Request.Form : Context.Request.Query)
+            {
+                <input type="hidden" name="@parameter.Key" value="@parameter.Value" />
+            }
+            <div class="w-100">
+                <input class="btn btn-lg btn-secondary" name="submit.Deny" type="submit" value="取消" />
+                <input class="btn btn-lg btn-success" name="submit.Accept" type="submit" value="确认登录" />
+            </div>
+        </form>
+
+    </div>
+</div>

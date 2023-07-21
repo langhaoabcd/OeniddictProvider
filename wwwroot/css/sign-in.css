@@ -1,0 +1,74 @@
+﻿html,
+body {
+    min-height: 100%;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    background-color: #f5f5f5;
+}
+
+.common-plpr-0 {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.common-btn {
+    color: #FBF6F6;
+    font-size: 1.2rem;
+    opacity: 0.5;
+    background-image: linear-gradient(43deg, #7a808e 0%, #595e69 40%, #424750 60%, #242931 100%);
+    box-shadow: 0px 6px 6px #999;
+    letter-spacing: 10px;
+}
+
+.common-radius {
+    border-radius: 100px;
+}
+
+.pwd-block {
+    position: relative;
+    /*font-size: 14px;*/
+    display: block;
+    width: 100%;
+}
+
+.input-icon-right {
+    position: absolute;
+    right: 8px;
+    top: 7px;
+    text-align: center;
+    color: #c0c4cc;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    /*pointer-events: none;*/
+    z-index: 300;
+    cursor: pointer;
+}
+
+.signin-wrapper {
+    height: 100vh;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.signin-top {
+    background-image: linear-gradient(0deg, #595e69 0%, #424750 50%, #242931 100%);
+    border-bottom-left-radius: 45%;
+    border-bottom-right-radius: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40%;
+    max-width: 530px;
+}
+
+.signin-form {
+    max-width: 530px;
+    padding: 20px;
+    height: 60%;
+}

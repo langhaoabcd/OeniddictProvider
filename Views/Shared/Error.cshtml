@@ -1,0 +1,26 @@
+﻿@using OeniddictProvider.ViewModels;
+@model ErrorViewModel
+
+<div class="jumbotron">
+    <h2>Ooooops, something went really bad! :(</h2>
+    @if (Model.ShowRequestId)
+    {
+        <p>
+            <strong>Request ID: </strong> <code>@Model.RequestId</code>
+        </p>
+    }
+
+    @if (!string.IsNullOrEmpty(Model.Error))
+    {
+        <p>
+            <strong>Error: </strong> <code>@Model.Error</code>
+        </p>
+    }
+
+    @if (!string.IsNullOrEmpty(Model.ErrorDescription))
+    {
+        <p>
+            <strong>ErrorDescription: </strong><code>@Model.ErrorDescription</code>
+        </p>
+    }
+</div>

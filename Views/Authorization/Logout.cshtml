@@ -1,0 +1,21 @@
+﻿@using Microsoft.Extensions.Primitives
+@{
+    ViewData["Title"] = "退出登录";
+}
+<link rel="stylesheet" href="~/css/sign-out.css" asp-append-version="true" />
+
+<div class="jumbotron signout-wrapper w-100 m-auto">
+    <h1>登出</h1>
+    <p style="padding-bottom: 30px;">
+        你确定要退出登录吗?
+    </p>
+    <form asp-controller="Authorization" class="w-100" asp-action="Logout" method="post">
+        @* Flow the request parameters so they can be received by the LogoutPost action: *@
+        @foreach (var parameter in Context.Request.HasFormContentType ?
+        (IEnumerable<KeyValuePair<string, StringValues>>)Context.Request.Form : Context.Request.Query)
+        {
+            <input type="hidden" name="@parameter.Key" value="@parameter.Value" />
+        }
+        <input class="w-100 btn btn-lg btn-success" name="Confirm" type="submit" value="确认退出" />
+    </form>
+</div>

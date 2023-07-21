@@ -1,0 +1,18 @@
+﻿
+
+body {
+    display: flex;
+    align-items: center;
+    background-color: #f5f5f5;
+}
+
+.signout-wrapper {
+    max-width: 530px;
+    /*height: 100vh;*/
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 5rem;
+}

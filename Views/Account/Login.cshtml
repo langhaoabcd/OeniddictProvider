@@ -1,0 +1,78 @@
+﻿@model OeniddictProvider.ViewModels.LoginViewModel;
+@{
+    ViewData["Title"] = "登录";
+    var isAuth = ViewData["IsAuthenticated"] == null ? false : (bool)ViewData["IsAuthenticated"];
+}
+<link rel="stylesheet" href="~/css/sign-in.css" asp-append-version="true" />
+@*@if (isAuth == false)
+{*@
+<div class="signin-wrapper">
+    <div class="signin-top w-100 m-auto">
+        <img class="mb-4" src="~/images/headIcon.png" alt="" width="100" height="100">
+    </div>
+    <div class="signin-form w-100 m-auto">
+        <form asp-controller="Account" asp-action="LogIn"
+              asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" autocomplete="off">
+            <div class="mb-3">
+                <input type="text" required="true" asp-for="CompanyCode" maxlength="30" class="form-control common-radius" id="floatingInput" placeholder="请输入公司简码">
+            </div>
+            <div class="mb-3">
+                <input type="text" required="true" asp-for="Account" maxlength="30" class="form-control common-radius" id="floatingInput" placeholder="请输入您的工号">
+            </div>
+            <div class="mb-5">
+                <div class="pwd-block">
+                    <input type="password" required="true" maxlength="30" asp-for="Password" class="form-control common-radius" style="padding-right: 20px" id="floatingPassword" placeholder="请输入您的密码">
+                    <i class="input-icon-right iconfont icon-eye-on" title="显示密码" id="see_oldpwd" onclick="seePwd(this)"></i>
+                </div>
+            </div>
+
+            @*  <div class="checkbox mb-3">
+            <label>
+            <input type="checkbox" value="remember-me"> Remember me
+            </label>
+            </div>*@
+            <button class="w-100 btn common-btn common-radius" type="submit">登 录</button>
+            @*<p class="mt-5 mb-3 text-muted">&copy; 2017–2023</p>*@
+        </form>
+    </div>
+</div>
+
+
+@*}
+else
+{
+    <div class="signin-wrapper">
+        <h1>Authenticationed @User?.Identity?.Name</h1>
+        <form method="post">
+            <button asp-controller="Account" asp-action="Logout"
+            asp-route-returnurl="@ViewData["ReturnUrl"]">退出登录</button>
+        </form>
+    </div>
+}*@
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var error = '@Html.Raw(TempData["Error"])';
+            if (error != '') {
+                layer.msg(error, { time: 1500 });
+            }
+        });
+
+        function seePwd(obj) {
+            var pwdValue = $(obj).parent().children('input:first-child').val();//获取密码值
+            var _type = $(obj).parent().children('input:first-child').attr('type');//获取input的type类型
+            if (_type == 'password') {
+                $(obj).parent().children('input:first-child').attr('type', 'text');
+                $(obj).attr('class', 'input-icon-right iconfont icon-xianshimima');
+            } else if (_type == 'text') {
+                $(obj).parent().children('input:first-child').attr('type', 'password');
+                $(obj).attr('class', 'input-icon-right iconfont icon-eye-on');
+            }
+            $(obj).parent().children('input:first-child').val(pwdValue);
+            $(obj).parent().children('input:first-child').focus();
+
+        }
+    </script>
+
+}
