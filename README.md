@@ -1,5 +1,5 @@
 
-## 关于本项目
+## 关于OeniddictProvider
 + 实现了多租户版本的Oauth2 及 OpenId Connect Server
  >支持 code flow(PKCE)/password flow/clientCredentials flow/refresh flow  
 + 核心授权数据单独存储，各用户(租户下)的数据分开存储 
@@ -13,10 +13,8 @@
 
 
 ## 效果图
-![登录页](/login.png){:height="300px" width="400px"}
-![授权页](/authorize.png){:height="300px" width="400px"}
-![请求参数](/authorize-request.png){:height="100px" width="400px"}
-
+<img src="login.png" width="400px">
+<img src="authorize.png" width="400px">
 
 ## 演示
-![演示](/step.gif){:height="400px" width="400px"}
+![演示](/step.gif)
