@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Openiddict.Api3.props" />
+</Project>
