@@ -49,13 +49,13 @@ services.AddOpenIddict()
                     .SetLogoutEndpointUris("connect/logout")
                     .SetIntrospectionEndpointUris("connect/introspect")
                     .SetTokenEndpointUris("connect/token")
-                    .SetUserinfoEndpointUris("connect/userinfo");
+                    .SetUserinfoEndpointUris("connect/userinfo")
 
-        //options.RegisterScopes("openid", "profile", "email", "offline_access");
-        //options.setaccesstokenlifetime(timespan.fromminutes(3));//È«¾ÖÉèÖÃ·ÃÎÊÁîÅÆ¹ıÆÚÊ±¼ä£¬Ä¬ÈÏ1Ğ¡Ê±£¬»òÕßÔÚ°ä·¢tokenÊ±µ¥¶ÀÉèÖÃ
-        //options.SetRefreshTokenLifetime(TimeSpan.FromMinutes(3));
-        //options.RequireProofKeyForCodeExchange();//È«¾ÖÆôÓÃpkce,»òÕßµ¥¶ÀÉèÖÃ¿Í»§¶Ëpkce
-        options.AcceptAnonymousClients();//½ÓÊÜÄäÃû¿Í»§¶Ë£¬ÔÊĞíÁ÷(password flow)²»´«client_id
+                    .RegisterScopes("openid", "profile", "email", "offline_access")
+                    .SetAccessTokenLifetime(TimeSpan.FromDays(1))//å…¨å±€è®¾ç½®è®¿é—®ä»¤ç‰Œè¿‡æœŸæ—¶é—´ï¼Œé»˜è®¤1å°æ—¶ï¼Œæˆ–è€…åœ¨é¢å‘tokenæ—¶å•ç‹¬è®¾ç½®
+                    .SetRefreshTokenLifetime(TimeSpan.FromDays(3));
+        //options.RequireProofKeyForCodeExchange();//å…¨å±€å¯ç”¨pkce,æˆ–è€…å•ç‹¬è®¾ç½®å®¢æˆ·ç«¯pkce
+        options.AcceptAnonymousClients();//æ¥å—åŒ¿åå®¢æˆ·ç«¯ï¼Œå…è®¸æµ(password flow)ä¸ä¼ client_id
 
         // Enable the client credentials flow.
         options.AllowClientCredentialsFlow()
@@ -66,16 +66,16 @@ services.AddOpenIddict()
         // Register the signing and encryption credentials.
         // Note: in a real world application, this encryption key should be
         // stored in a safe place (e.g in Azure KeyVault, stored as a secret).
-        options.DisableAccessTokenEncryption();//½ûÓÃ·ÃÎÊÁîÅÆ¼ÓÃÜ
+        options.DisableAccessTokenEncryption();//ç¦ç”¨è®¿é—®ä»¤ç‰ŒåŠ å¯†
         options.AddEncryptionKey(new SymmetricSecurityKey(
             Convert.FromBase64String("DRjd/GnduI3Efzen9V9BvbNUfc/VKgXltV7Kbk9sMkY=")));
 
-        //options.AddDevelopmentEncryptionCertificate();
-        //options.AddDevelopmentSigningCertificate();
-        var cert1 = builder.Configuration.GetSection("Certificate:EncryptionCertificate").Value;
-        var cert2 = builder.Configuration.GetSection("Certificate:SigningCertificate").Value;
-        options.AddEncryptionCertificate(new X509Certificate2(Hex.Decode(cert1), string.Empty));
-        options.AddSigningCertificate(new X509Certificate2(Hex.Decode(cert2), string.Empty));
+        options.AddDevelopmentEncryptionCertificate();
+        options.AddDevelopmentSigningCertificate();
+        //var cert1 = builder.Configuration.GetSection("Certificate:EncryptionCertificate").Value;
+        //var cert2 = builder.Configuration.GetSection("Certificate:SigningCertificate").Value;
+        //options.AddEncryptionCertificate(new X509Certificate2(Hex.Decode(cert1), string.Empty));
+        //options.AddSigningCertificate(new X509Certificate2(Hex.Decode(cert2), string.Empty));
 
         // Register the ASP.NET Core host and configure the ASP.NET Core-specific options.
         options.UseAspNetCore()
@@ -83,7 +83,7 @@ services.AddOpenIddict()
                .EnableLogoutEndpointPassthrough()
                .EnableTokenEndpointPassthrough()
                .EnableUserinfoEndpointPassthrough();
-        //.EnableStatusCodePagesIntegration();//ÆôÓÃ EnableStatusCodePagesIntegration Ê±£¬OpenIddict ½«³¢ÊÔ´Ó ASP.NET Core µÄ×´Ì¬ÂëÒ³ÃæÖĞ¼ä¼şÖĞ»ñÈ¡ÏìÓ¦¡£ÕâÒâÎ¶×Å£¬Èç¹ûÄãµÄÓ¦ÓÃ³ÌĞòÓĞÒ»¸öÌØ¶¨µÄ×´Ì¬ÂëÒ³Ãæ£¨ÀıÈç£¬¶ÔÓÚ 404 »ò 500 ´íÎó£©£¬OpenIddict ½«Ê¹ÓÃÕâĞ©Ò³ÃæÀ´ÏìÓ¦ÏàÓ¦µÄ´íÎó£¬¶ø²»ÊÇÄ¬ÈÏµÄ´íÎóÏìÓ¦¡£
+        //.EnableStatusCodePagesIntegration();//å¯ç”¨ EnableStatusCodePagesIntegration æ—¶ï¼ŒOpenIddict å°†å°è¯•ä» ASP.NET Core çš„çŠ¶æ€ç é¡µé¢ä¸­é—´ä»¶ä¸­è·å–å“åº”ã€‚è¿™æ„å‘³ç€ï¼Œå¦‚æœä½ çš„åº”ç”¨ç¨‹åºæœ‰ä¸€ä¸ªç‰¹å®šçš„çŠ¶æ€ç é¡µé¢ï¼ˆä¾‹å¦‚ï¼Œå¯¹äº 404 æˆ– 500 é”™è¯¯ï¼‰ï¼ŒOpenIddict å°†ä½¿ç”¨è¿™äº›é¡µé¢æ¥å“åº”ç›¸åº”çš„é”™è¯¯ï¼Œè€Œä¸æ˜¯é»˜è®¤çš„é”™è¯¯å“åº”ã€‚
     })
     // Register the OpenIddict validation components.
     .AddValidation(options =>
@@ -96,8 +96,8 @@ services.AddOpenIddict()
     });
 
 services.AddMultiTenant<TenantInfo>()
-                .WithClaimStrategy()//Ö¸¶¨¶ÁÈ¡×â»§IdµÄ²ßÂÔ,ÉêÃ÷Òª°üº¬(__tenant__)¡£¿É¶à¸ö²ßÂÔ°´Ë³ĞòÖ´ĞĞ£¬
-                .WithConfigurationStore();//´ÓÅäÖÃÎÄ¼ş¶ÁÈ¡×â»§µÄÁ¬½Ó×Ö·û´®ÅäÖÃ
+                .WithClaimStrategy()//æŒ‡å®šè¯»å–ç§Ÿæˆ·Idçš„ç­–ç•¥,ç”³æ˜è¦åŒ…å«(__tenant__)ã€‚å¯å¤šä¸ªç­–ç•¥æŒ‰é¡ºåºæ‰§è¡Œï¼Œ
+                .WithConfigurationStore();//ä»é…ç½®æ–‡ä»¶è¯»å–ç§Ÿæˆ·çš„è¿æ¥å­—ç¬¦ä¸²é…ç½®
 services.AddDbContext<UserTenantDbContext>();
 services.AddHttpContextAccessor();
 services.AddScoped<UserService>();
@@ -108,16 +108,25 @@ services.AddRouting(options => options.LowercaseUrls = true);
 
 var app = builder.Build();
 
-if (!app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
-    app.UseHttpsRedirection();
-    app.UseHsts();
+    
 }
 else
 {
+var forwardedHeaderOptions = new ForwardedHeadersOptions
+    {
+        ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+    };
+    forwardedHeaderOptions.KnownNetworks.Clear();
+    forwardedHeaderOptions.KnownProxies.Clear();
+    app.UseForwardedHeaders(forwardedHeaderOptions);
+
     app.UseExceptionHandler("/Home/Error");
 }
+app.UseHttpsRedirection();
+    app.UseHsts();
 
 app.UseStaticFiles();
 app.UseMultiTenant();
