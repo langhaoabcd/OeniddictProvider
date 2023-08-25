@@ -1,7 +1,6 @@
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 COPY . .
 
-# ÉèÖÃÊ±Çø
 RUN ln -sf /usr/share/zoneinfo/Asia/ShangHai /etc/localtime
 RUN echo "Asia/Shanghai" > /etc/timezone
 RUN dpkg-reconfigure -f noninteractive tzdata
