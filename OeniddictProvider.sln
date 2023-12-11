@@ -5,6 +5,14 @@ VisualStudioVersion = 17.6.33712.159
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OeniddictProvider", "OeniddictProvider.csproj", "{B9E5BC5C-ED66-48B2-A7F6-347D339B5363}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{DAE091F6-7AA4-46F4-8C25-8270DF7FD9D0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Openiddict.Api", "samples\OpeniddictApi1\Openiddict.Api.csproj", "{172578C1-7418-4039-9613-9646875499E7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Openiddict.Api2", "samples\Openiddict.Api2\Openiddict.Api2.csproj", "{9168386E-7ABC-4CAF-A48F-BBF7ACFA3ABB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Openiddict.Api3", "samples\Openiddict.Api3\Openiddict.Api3.csproj", "{EEC4E3A6-FFCE-49A3-84AD-F78B6DD8C719}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +23,26 @@ Global
 		{B9E5BC5C-ED66-48B2-A7F6-347D339B5363}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9E5BC5C-ED66-48B2-A7F6-347D339B5363}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9E5BC5C-ED66-48B2-A7F6-347D339B5363}.Release|Any CPU.Build.0 = Release|Any CPU
+		{172578C1-7418-4039-9613-9646875499E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{172578C1-7418-4039-9613-9646875499E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{172578C1-7418-4039-9613-9646875499E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{172578C1-7418-4039-9613-9646875499E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9168386E-7ABC-4CAF-A48F-BBF7ACFA3ABB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9168386E-7ABC-4CAF-A48F-BBF7ACFA3ABB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9168386E-7ABC-4CAF-A48F-BBF7ACFA3ABB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9168386E-7ABC-4CAF-A48F-BBF7ACFA3ABB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEC4E3A6-FFCE-49A3-84AD-F78B6DD8C719}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEC4E3A6-FFCE-49A3-84AD-F78B6DD8C719}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEC4E3A6-FFCE-49A3-84AD-F78B6DD8C719}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEC4E3A6-FFCE-49A3-84AD-F78B6DD8C719}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{172578C1-7418-4039-9613-9646875499E7} = {DAE091F6-7AA4-46F4-8C25-8270DF7FD9D0}
+		{9168386E-7ABC-4CAF-A48F-BBF7ACFA3ABB} = {DAE091F6-7AA4-46F4-8C25-8270DF7FD9D0}
+		{EEC4E3A6-FFCE-49A3-84AD-F78B6DD8C719} = {DAE091F6-7AA4-46F4-8C25-8270DF7FD9D0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B6374B31-6BDB-438C-BA49-7839152DB0D2}
